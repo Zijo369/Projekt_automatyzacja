@@ -1,0 +1,9 @@
+jobs:
+  send-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send webhook to n8n
+        run: |
+          curl -X POST https://projekt.app.n8n.cloud/webhook-test/c3408e53-7b5c-4b9a-b0ff-e1d55bcc64f1 \
+          -H "Content-Type: application/json" \
+          -d '{"event": "${{ github.event_name }}", "repo": "${{ github.repository }}", "author": "${{ github.actor }}"}'
